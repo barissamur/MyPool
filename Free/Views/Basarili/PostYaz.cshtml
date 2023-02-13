@@ -1,0 +1,22 @@
+﻿@model PostViewModel
+@{
+    Layout = "_Layout2";
+    TempData["KullaniciAdi"] = Model.Kullanici.KullaniciAdi;
+}
+
+
+<form asp-controller="Basarili" asp-action="PostYaz">
+    <input type="hidden" asp-route-id="@Model.Kullanici.Id" />
+    <div class="mb-2">
+        <label class="form-control" asp-for="Baslik">Başlık</label>
+        <input class="form-control" type="text" asp-for="Baslik" />
+        <span asp-validation-for="Baslik"></span>
+    </div>
+    <div class="mb-2">
+        <label class="form-control" asp-for="Icerik">İçerik</label>
+        <textarea class="form-control" rows="7" asp-for="Icerik">
+        <span asp-validation-for="Icerik"></span>
+</textarea>
+    </div>
+    <button class="btn btn-primary">Yaz</button>
+</form>

@@ -1,0 +1,35 @@
+﻿@using Free.Data;
+@model List<Post>
+@inject IHttpContextAccessor girenId;
+
+@{
+    Layout = "_Layout2";
+    int kullaniciId = Convert.ToInt32(ViewData["kullaniciId"]);
+}
+
+<h1 class="text-info">Giriş Başarılı</h1>
+<br />
+<br />
+<p class="fs-4 text-secondary">Hoş geldiniz, @TempData["KullaniciAdi"]</p>
+
+@foreach (Post item in Model)
+{
+    <div class="card text-white bg-primary mb-3" style="width:100%">
+
+        <div class="card-header position-relative">
+            <a asp-action="ProfilAc" asp-route-id="@item.KullaniciId" class="text-info">  @item.Kullanicilar[0].KullaniciAdi</a>
+            @if (item.KullaniciId == kullaniciId)
+            {
+                <a asp-route-id="@item.Id" asp-action="PostSil" class="me-1 btn btn-danger btn-sm position-absolute rounded-circle" style="right:0; top:5px">×</a>
+            }
+        </div>
+        <div class="card-header position-relative">Başlık: @item.Baslik</div>
+        <div class="card-body">
+            <p class="card-text">@item.Icerik</p>
+        </div>
+        <div class="card-footer text-muted position-relative">
+            <a asp-route-id="@item.Id" asp-action="PostBegen" class="fs-5 btn p-0 text-danger">@item.BegeniSayisi ♥</a>
+            <a style="position:absolute; right:0px; font-style:italic; margin-right:5px">@item.OlusturmaZamani</a>
+        </div>
+    </div>
+}

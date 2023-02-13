@@ -1,0 +1,22 @@
+﻿@model KullaniciViewModel
+
+@{
+    ViewData["Title"] = "Giriş Yap";
+}
+
+<div id="kayit" class="position-absolute" style="width:300px; left:40%">
+    <h1 class="mb-4 text-center">Giriş Yap</h1>
+    <form asp-controller="Giris" asp-action="Index" method="post">
+        <div class="mb-2 position-relative">
+            <label class="form-label" asp-for="KullaniciAdi"></label>
+            <input type="text" asp-for="KullaniciAdi" class="form-text" style="position:absolute; right:0px" />
+            <span asp-validation-for="KullaniciAdi"></span>
+        </div>
+        <div class="mb-2 position-relative">
+            <label class="form-label" asp-for="Sifre"></label>
+            <input type="text" asp-for="Sifre" class="form-text" style="position:absolute; right:0px" />
+            <span asp-validation-for="Sifre"></span>
+        </div>
+        <button class="btn btn-primary position-absolute mt-4" style="left:50%">Giriş Yap</button>
+    </form>
+</div>
